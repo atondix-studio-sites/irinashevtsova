@@ -1,69 +1,136 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ClosingCta, PathLine } from "@/components/site-shell";
+import { gallery, services, testimonials } from "@/content/site-content";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <>
+      <section className="hero shell">
+        <div className="hero__copy">
+          <p className="eyebrow">Fürth · Sprache · Orientierung · Begegnung</p>
+          <h1>
+            Gemeinsam wird aus <em>ankommen</em> ein Zuhause.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="hero__lead">
+            Ich begleite Menschen durch Sprache, Alltag und Neuanfang – herzlich,
+            praktisch und auf Augenhöhe.
+          </p>
+          <div className="hero__actions">
+            <Link className="button" href="/kontakt">Erzähl mir, was du brauchst</Link>
+            <Link className="text-link" href="/leistungen">Meine Unterstützung ansehen <span>→</span></Link>
+          </div>
+          <PathLine label="Dein Weg darf leichter werden." />
+        </div>
+        <div className="hero__portrait">
+          <div className="hero__image-wrap">
+            <Image
+              src="/media/307-whatsapp-image-2025-06-07-at-13-02-02.jpeg"
+              alt="Irina Shevtsova"
+              fill
+              priority
+              sizes="(max-width: 800px) 92vw, 42vw"
+            />
+          </div>
+          <div className="hero__note">
+            <strong>20 Jahre in Fürth</strong>
+            <span>und noch immer neugierig auf jede neue Geschichte.</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="promise-strip" aria-label="So arbeite ich">
+        <div className="shell promise-strip__inner">
+          <span>Persönlich statt pauschal</span>
+          <span>Verständlich statt kompliziert</span>
+          <span>Gemeinsam statt allein</span>
+        </div>
+      </section>
+
+      <section className="section shell services-preview">
+        <div className="section-heading section-heading--split">
+          <div>
+            <p className="eyebrow">Wie ich dich unterstütze</p>
+            <h2>Hilfe, die im echten Leben ankommt.</h2>
+          </div>
+          <p>
+            Kein fertiges Programm für alle. Wir schauen, was gerade schwer ist
+            und welche Unterstützung wirklich passt.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="service-list">
+          {services.slice(0, 4).map((service) => (
+            <article className="service-row" key={service.number}>
+              <span>{service.number}</span>
+              <h3>{service.title}</h3>
+              <p>{service.short}</p>
+              <Link aria-label={`${service.title} – mehr erfahren`} href="/leistungen">↗</Link>
+            </article>
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="section story-band">
+        <div className="shell story-band__grid">
+          <div className="story-band__image">
+            <Image
+              src="/media/167-whatsapp-bild-2025-04-19-um-12-31-01_ae83e930.jpg"
+              alt="Irina am Meer"
+              fill
+              sizes="(max-width: 800px) 92vw, 45vw"
+            />
+          </div>
+          <div className="story-band__copy">
+            <p className="eyebrow">Warum ich begleite</p>
+            <h2>Ich kenne das Gefühl, zwischen Sprachen und Welten zu stehen.</h2>
+            <p>
+              Meine eigene Reise durch Länder, Sprachen und Kulturen hat mich
+              geprägt. Seit 20 Jahren lebe ich mit meinen zwei Söhnen in Fürth.
+              Heute helfe ich anderen dabei, hier ihren eigenen Platz zu finden.
+            </p>
+            <Link className="text-link" href="/ueber-mich">Meine Geschichte lesen <span>→</span></Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section shell gallery-section">
+        <div className="section-heading section-heading--split">
+          <div>
+            <p className="eyebrow">Mittendrin</p>
+            <h2>Begegnung lässt sich nicht inszenieren.</h2>
+          </div>
+          <p>
+            Sprachkurse, Reisen, Gespräche und gemeinsames Entdecken – echte
+            Momente aus meiner Arbeit.
+          </p>
+        </div>
+        <div className="photo-ribbon">
+          {gallery.map((photo, index) => (
+            <figure className={`photo-ribbon__item photo-ribbon__item--${index + 1}`} key={photo.src}>
+              <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 700px) 80vw, 28vw" />
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <section className="section voices">
+        <div className="shell">
+          <div className="section-heading">
+            <p className="eyebrow">Was andere erlebt haben</p>
+            <h2>„Sie hört zu, fragt nach und denkt mit.“</h2>
+          </div>
+          <div className="voice-grid">
+            {testimonials.map((testimonial) => (
+              <blockquote key={testimonial.name}>
+                <p>“{testimonial.quote}”</p>
+                <footer><strong>{testimonial.name}</strong><span>{testimonial.place}</span></footer>
+              </blockquote>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ClosingCta />
+    </>
   );
 }
