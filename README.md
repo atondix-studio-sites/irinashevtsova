@@ -1,13 +1,14 @@
 # Irina Shevtsova
 
-Eigenständiger Next.js-Relaunch von [irinashevtsova.de](https://irinashevtsova.de).
+Eigenständige, originalgetreue Next.js-Migration von [irinashevtsova.de](https://irinashevtsova.de).
 
 ## Enthalten
 
 - App Router mit statisch erzeugten Seiten
 - Startseite, Leistungen, Aktuell, Über mich und Kontakt
 - migrierte Fassungen von Impressum und Datenschutzerklärung
-- lokale Medien aus dem bisherigen WordPress-Auftritt
+- originalgetreues Layout mit Courgette, Open Sans, Farben und Seitenstruktur des WordPress-Auftritts
+- lokale Bilder und das Startseitenvideo aus dem bisherigen WordPress-Auftritt
 - Redirects für die bisherigen `/index.php/...`-Adressen
 - Sitemap, Robots-Datei und Seiten-Metadaten
 - responsive Navigation ohne Client-JavaScript

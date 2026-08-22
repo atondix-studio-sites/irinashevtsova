@@ -1,51 +1,49 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const navigation = [
-  { href: "/leistungen", label: "Leistungen" },
-  { href: "/aktuell", label: "Aktuell" },
-  { href: "/ueber-mich", label: "Über mich" },
-  { href: "/kontakt", label: "Kontakt" },
-];
+  ["Aktuell", "/aktuell"],
+  ["Kontakt", "/kontakt"],
+  ["Leistungen", "/leistungen"],
+  ["Über mich", "/ueber-mich"],
+] as const;
 
-export function BrandMark() {
+function FacebookIcon() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.7 22v-8.7h2.9l.4-3.4h-3.3V7.7c0-1 .3-1.7 1.7-1.7h1.8V3a24 24 0 0 0-2.6-.1c-2.6 0-4.4 1.6-4.4 4.5v2.5H7.3v3.4h2.9V22h3.5Z" /></svg>;
+}
+
+function WhatsAppIcon() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a9.8 9.8 0 0 0-8.4 14.9L2.2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A7.9 7.9 0 1 1 12 19.8Zm4.4-5.9c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.7.9c-.1.2-.3.2-.5.1-1.5-.7-2.5-1.4-3.5-3.1-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4H8.3c-.2 0-.5.1-.7.4-.2.2-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2.1 3.2 5 4.5.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .2-1.1 0-.1-.2-.2-.4-.3l-1.3-.6Z" /></svg>;
+}
+
+function TelegramIcon() {
+  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21.5 3.4-3.2 16.1c-.2 1.1-.9 1.4-1.8.9l-4.9-3.6-2.4 2.3c-.2.3-.5.5-1 .5l.4-5 9.1-8.3c.4-.4-.1-.6-.6-.2L5.8 13.2.9 11.7c-1.1-.3-1.1-1.1.2-1.6l19-7.3c.9-.4 1.7.2 1.4.6Z" /></svg>;
+}
+
+export function SocialLinks({ colored = false }: { colored?: boolean }) {
   return (
-    <Link className="brand" href="/" aria-label="Irina Shevtsova – Startseite">
-      <svg className="brand__mark" viewBox="0 0 52 52" aria-hidden="true">
-        <path d="M10 13c5-7 15-5 16 3 2-8 13-10 17-3 7 12-7 23-17 30C16 36 3 25 10 13Z" />
-        <path d="M26 43c-2-10 4-18 14-23" />
-      </svg>
-      <span>
-        <strong>Irina Shevtsova</strong>
-        <small>Deine Wegbegleiterin</small>
-      </span>
-    </Link>
+    <div className={`social-links${colored ? " social-links--colored" : ""}`}>
+      <a href="https://www.facebook.com/irina.shevtsova.589" aria-label="Facebook"><FacebookIcon /></a>
+      <a href="https://wa.me/+491791070525" aria-label="WhatsApp"><WhatsAppIcon /></a>
+      <a href="https://t.me/Shetsova_Irina" aria-label="Telegram"><TelegramIcon /></a>
+    </div>
   );
 }
 
 export function SiteHeader() {
   return (
     <header className="site-header">
-      <div className="shell site-header__inner">
-        <BrandMark />
-        <nav className="desktop-nav" aria-label="Hauptnavigation">
-          {navigation.map((item) => (
-            <Link href={item.href} key={item.href}>
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-        <Link className="button button--small header-cta" href="/kontakt">
-          Lass uns sprechen
+      <div className="wide site-header__inner">
+        <Link className="site-logo" href="/" aria-label="Irina Shevtsova">
+          <Image src="/media/151-logo-2.png" alt="Irina Shevtsova" width={512} height={512} priority />
         </Link>
+        <nav className="desktop-nav" aria-label="Navigation">
+          {navigation.map(([label, href]) => <Link href={href} key={href}>{label}</Link>)}
+        </nav>
+        <SocialLinks />
         <details className="mobile-nav">
-          <summary aria-label="Menü öffnen"><span /><span /><span /></summary>
-          <nav aria-label="Mobile Navigation">
-            {navigation.map((item) => (
-              <Link href={item.href} key={item.href}>
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+          <summary aria-label="Navigation öffnen"><span /><span /><span /></summary>
+          <nav>{navigation.map(([label, href]) => <Link href={href} key={href}>{label}</Link>)}</nav>
         </details>
       </div>
     </header>
@@ -55,85 +53,35 @@ export function SiteHeader() {
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <div className="shell site-footer__grid">
-        <div>
-          <BrandMark />
-          <p className="site-footer__intro">
-            Sprachförderung, Orientierung und Begegnung in Fürth – mit Zeit,
-            Erfahrung und einem offenen Ohr.
-          </p>
+      <div className="wide site-footer__inner">
+        <strong>Irina Shevtsova</strong>
+        <div className="site-footer__center">
+          <nav><Link href="/datenschutzerklaerung">Datenschutzerklärung</Link><Link href="/impressum">Impressum</Link></nav>
+          <p>© irinashevtsova.de – 2025</p>
+          <a className="creator" href="https://atondix.de">Erstellt durch atondix – Ihr Partner für Marketing, Design und IT</a>
         </div>
-        <div>
-          <p className="footer-label">Direkt verbunden</p>
-          <a href="tel:+491791070525">0179 1070525</a>
-          <a href="mailto:irinashevtsova74@gmail.com">irinashevtsova74@gmail.com</a>
-          <a href="https://wa.me/491791070525">WhatsApp</a>
-        </div>
-        <div>
-          <p className="footer-label">Seiten</p>
-          {navigation.map((item) => (
-            <Link href={item.href} key={item.href}>{item.label}</Link>
-          ))}
-        </div>
-      </div>
-      <div className="shell site-footer__bottom">
-        <span>© {new Date().getFullYear()} Irina Shevtsova</span>
-        <span>
-          <Link href="/impressum">Impressum</Link>
-          <Link href="/datenschutzerklaerung">Datenschutz</Link>
-        </span>
+        <SocialLinks />
       </div>
     </footer>
   );
 }
 
-export function PathLine({ label }: { label?: string }) {
+export function ClosingCta() {
   return (
-    <div className="path-line" aria-hidden={label ? undefined : true}>
-      <svg viewBox="0 0 420 82" preserveAspectRatio="none">
-        <path d="M4 66C66 4 120 78 182 37S305 4 416 40" />
-        <circle cx="416" cy="40" r="7" />
-      </svg>
-      {label ? <span>{label}</span> : null}
-    </div>
-  );
-}
-
-export function PageIntro({
-  eyebrow,
-  title,
-  lead,
-}: {
-  eyebrow: string;
-  title: string;
-  lead: string;
-}) {
-  return (
-    <section className="page-intro shell">
-      <div className="page-intro__copy">
-        <p className="eyebrow">{eyebrow}</p>
-        <h1>{title}</h1>
-        <p className="lead">{lead}</p>
+    <section className="closing-cta">
+      <div className="content-width">
+        <h2>Bist du bereit mit mir deinen Weg zu entdecken?</h2>
+        <p>Mein Angebot verbindet Sprachförderung, Alltagsbegleitung und kraftvolle Reisen – für ein selbstbestimmtes Leben mit neuen Perspektiven.</p>
+        <Link className="button" href="/kontakt">Kontakt</Link>
       </div>
-      <PathLine />
     </section>
   );
 }
 
-export function ClosingCta() {
+export function PageHero({ title, subtitle, image }: { title: string; subtitle: string; image: string }) {
   return (
-    <section className="closing-cta shell">
-      <div>
-        <p className="eyebrow">Dein nächster Schritt</p>
-        <h2>Du musst deinen Weg nicht allein finden.</h2>
-      </div>
-      <div>
-        <p>
-          Erzähl mir kurz, wobei du Unterstützung brauchst. Wir schauen gemeinsam,
-          was jetzt wirklich weiterhilft.
-        </p>
-        <Link className="button button--light" href="/kontakt">Kontakt aufnehmen</Link>
-      </div>
+    <section className="page-hero" style={{ backgroundImage: `linear-gradient(rgb(0 0 0 / .34), rgb(0 0 0 / .34)), url(${image})` }}>
+      <div><h1>{title}</h1><p>{subtitle}</p></div>
     </section>
   );
 }
