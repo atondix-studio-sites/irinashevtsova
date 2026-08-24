@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Courgette, Open_Sans } from "next/font/google";
+import { MotionController } from "@/components/motion-controller";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import "./globals.css";
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteHeader />
         <main id="inhalt">{children}</main>
         <SiteFooter />
+        <MotionController />
       </body>
     </html>
   );

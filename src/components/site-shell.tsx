@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { MobileNavigation } from "@/components/mobile-navigation";
 
 const navigation = [
   ["Aktuell", "/aktuell"],
@@ -41,10 +42,7 @@ export function SiteHeader() {
           {navigation.map(([label, href]) => <Link href={href} key={href}>{label}</Link>)}
         </nav>
         <SocialLinks />
-        <details className="mobile-nav">
-          <summary aria-label="Navigation öffnen"><span /><span /><span /></summary>
-          <nav>{navigation.map(([label, href]) => <Link href={href} key={href}>{label}</Link>)}</nav>
-        </details>
+        <MobileNavigation />
       </div>
     </header>
   );
@@ -54,7 +52,7 @@ export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="wide site-footer__inner">
-        <strong>Irina Shevtsova</strong>
+        <strong className="footer-name">Irina Shevtsova</strong>
         <div className="site-footer__center">
           <nav><Link href="/datenschutzerklaerung">Datenschutzerklärung</Link><Link href="/impressum">Impressum</Link></nav>
           <p>© irinashevtsova.de – 2025</p>
@@ -78,9 +76,9 @@ export function ClosingCta() {
   );
 }
 
-export function PageHero({ title, subtitle, image }: { title: string; subtitle: string; image: string }) {
+export function PageHero({ title, subtitle, image, focalPoint = "50% 50%" }: { title: string; subtitle: string; image: string; focalPoint?: string }) {
   return (
-    <section className="page-hero" style={{ backgroundImage: `linear-gradient(rgb(0 0 0 / .34), rgb(0 0 0 / .34)), url(${image})` }}>
+    <section className="page-hero" style={{ backgroundImage: `linear-gradient(rgb(50 36 33 / .5), rgb(50 36 33 / .5)), url(${image})`, backgroundPosition: focalPoint }}>
       <div><h1>{title}</h1><p>{subtitle}</p></div>
     </section>
   );

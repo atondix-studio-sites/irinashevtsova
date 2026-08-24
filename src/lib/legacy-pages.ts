@@ -16,8 +16,7 @@ export function getLegacyPage(slug: string) {
     .replace(/<script[\s\S]*?<\/script>/gi, "")
     .replace(/<style[\s\S]*?<\/style>/gi, "")
     .replace(/<form[\s\S]*?<\/form>/gi, "")
-    .replace(/\sclass="[^"]*"/g, "")
-    .replace(/\sid="[^"]*"/g, "");
+    .replace(/\sclass="[^"]*"/g, "");
 
   return { title: page.title.rendered, html };
 }

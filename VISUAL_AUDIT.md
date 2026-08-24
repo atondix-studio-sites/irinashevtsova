@@ -110,4 +110,17 @@ This inventory was written before implementation. Measurements were taken in the
 
 ## Resolution status
 
-Implementation results and any remaining constraints will be recorded here after the parity pass.
+The parity pass addressed the visual and frontend-behavior items above:
+
+- Restored the measured global colors, 110 px header, 89 px logo, 355 px page heroes, 1180/1280 px content widths, responsive 18 px body typography, compact footer, mobile navigation overlay, and original focal points.
+- Rebuilt the homepage as the reference 60/40 hero, including its 2:3 autoplay/muted/looping video, accessible play/pause control, button motion, three-column gallery ordering, section cadence, and image alternatives.
+- Restored all four complete testimonials in an accessible 4-second looping carousel with arrows and pagination.
+- Restored the 32 reference reveal targets and five motion directions at 600 ms/ease-in. Content stays visible without JavaScript and under `prefers-reduced-motion`.
+- Matched the secondary-page content width, type scale, vertical rhythm, CTA proportions, contact form rows, social treatment, and legal-page typography. Privacy-table-of-contents anchors are preserved.
+- Preserved improvements over the source: no mobile horizontal overflow, 44 px interactive targets, skip navigation, visible keyboard focus, optimized local images, and robust reduced-motion behavior.
+
+Remaining external constraints:
+
+1. The local contact form still uses `mailto:`. Exact Contact Form 7 AJAX delivery, confirmation email, spam protection, and server-side error messages require a mail/API backend and delivery credentials that are not present in this static Next.js project.
+2. The Complianz “Zustimmung verwalten” control was not ported. The local rebuild currently has no equivalent tracking/cookie stack to manage; adding the control meaningfully requires selecting and configuring a consent platform and the scripts it governs.
+3. Automated post-fix screenshots could not be captured after the development-server restart because the in-app browser blocked the localhost error-page navigation. The initial side-by-side audit was completed visually; the repair pass was subsequently verified by source assertions, ESLint, TypeScript, and a full static production build.
