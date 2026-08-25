@@ -16,6 +16,6 @@ export default function ContactPage() {
       <label>Deine Nachricht<textarea name="message" rows={7} required /></label>
       <button className="button" type="submit">Senden</button>
     </form>
-    <section className="social-contact tone"><h2>Oder schreibe mir über Social Media</h2><SocialLinks /></section>
+    <section className="social-contact tone"><h2 data-reveal="fade-up">Oder schreibe mir über Social Media</h2><SocialLinks /></section>
   </>;
 }

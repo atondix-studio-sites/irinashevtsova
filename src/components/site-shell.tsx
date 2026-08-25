@@ -36,7 +36,7 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="wide site-header__inner">
         <Link className="site-logo" href="/" aria-label="Irina Shevtsova">
-          <Image src="/media/151-logo-2.png" alt="Irina Shevtsova" width={512} height={512} priority />
+          <Image src="/media/151-logo-2.png" alt="Irina Shevtsova" width={512} height={512} sizes="89px" priority />
         </Link>
         <nav className="desktop-nav" aria-label="Navigation">
           {navigation.map(([label, href]) => <Link href={href} key={href}>{label}</Link>)}
@@ -68,9 +68,9 @@ export function ClosingCta() {
   return (
     <section className="closing-cta">
       <div className="content-width">
-        <h2>Bist du bereit mit mir deinen Weg zu entdecken?</h2>
-        <p>Mein Angebot verbindet Sprachförderung, Alltagsbegleitung und kraftvolle Reisen – für ein selbstbestimmtes Leben mit neuen Perspektiven.</p>
-        <Link className="button" href="/kontakt">Kontakt</Link>
+        <h2 data-reveal="fade-up">Bist du bereit mit mir deinen Weg zu entdecken?</h2>
+        <p data-reveal="fade-up">Mein Angebot verbindet Sprachförderung, Alltagsbegleitung und kraftvolle Reisen – für ein selbstbestimmtes Leben mit neuen Perspektiven.</p>
+        <Link className="button" href="/kontakt" data-reveal="fade-up">Kontakt</Link>
       </div>
     </section>
   );

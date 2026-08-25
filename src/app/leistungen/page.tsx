@@ -15,7 +15,7 @@ const services = [
 export default function ServicesPage() {
   return <>
     <PageHero title="Leistungen" subtitle="Was ich mit Herz und Erfahrung auf ihrem Weg in ein neues Leben – mit Zeit, Vertrauen und dem festen Glauben daran, dass jeder Schritt zählt." image="/media/247-diakoneo.jpg" focalPoint="50% 53%" />
-    <section className="content-width simple-list">{services.map(([title, text]) => <article key={title}><h2>{title}</h2><p>{text}</p></article>)}</section>
+    <section className="content-width simple-list">{services.map(([title, text]) => <article key={title} data-reveal="fade-up"><h2>{title}</h2><p>{text}</p></article>)}</section>
     <ClosingCta />
   </>;
 }

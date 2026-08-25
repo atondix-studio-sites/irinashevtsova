@@ -88,15 +88,15 @@ export default function HomePage() {
         <HeroVideo />
       </section>
 
-      <section className="services-home tone" data-reveal="fade-up">
+      <section className="services-home tone">
         <div className="wide">
           <p className="kicker" data-reveal="fade-up">Meine Leistungen für dich</p>
           <h2 data-reveal="fade-up">Deine Unterstützung für den Alltag in<br className="desktop-only" /> Deutschland</h2>
           <p className="section-subtitle" data-reveal="fade-up">Individuelle Hilfe für eine erfolgreiche Integration</p>
           <div className="service-columns">
-            <article><h3 data-reveal="fade-up">Begleitung & Übersetzungen</h3><p data-reveal="fade-up">Ich begleite dich zu wichtigen Terminen, wie Arztbesuchen oder Behördengängen, und unterstütze dich mit Übersetzungen. Elterngespräche in Kitas und Schulen in Fürth übersetze ich kostenlos.</p></article>
-            <article><h3 data-reveal="fade-up">Deutsch lernen leicht gemacht</h3><p data-reveal="fade-up">In meinen kostenlosen Deutschkursen lernst du genau das, was du im Alltag brauchst. Im Sprachcafé kannst du in entspannter Atmosphäre mit Muttersprachler*innen üben und neue Leute kennenlernen.</p></article>
-            <article><h3 data-reveal="fade-up">Beratung & Integration</h3><p data-reveal="fade-up">Ich helfe dir, dich in Schule, Ausbildung oder Beruf zurechtzufinden. Gemeinsam finden wir Wege, damit du dich sicher fühlst, deine Ziele erreichst und neue Perspektiven entdeckst.</p></article>
+            <article data-reveal="fade-up"><h3>Begleitung & Übersetzungen</h3><p>Ich begleite dich zu wichtigen Terminen, wie Arztbesuchen oder Behördengängen, und unterstütze dich mit Übersetzungen. Elterngespräche in Kitas und Schulen in Fürth übersetze ich kostenlos.</p></article>
+            <article data-reveal="fade-up"><h3>Deutsch lernen leicht gemacht</h3><p>In meinen kostenlosen Deutschkursen lernst du genau das, was du im Alltag brauchst. Im Sprachcafé kannst du in entspannter Atmosphäre mit Muttersprachler*innen üben und neue Leute kennenlernen.</p></article>
+            <article data-reveal="fade-up"><h3>Beratung & Integration</h3><p>Ich helfe dir, dich in Schule, Ausbildung oder Beruf zurechtzufinden. Gemeinsam finden wir Wege, damit du dich sicher fühlst, deine Ziele erreichst und neue Perspektiven entdeckst.</p></article>
           </div>
         </div>
       </section>
@@ -114,7 +114,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="about-home tone" data-reveal="fade-up">
+      <section className="about-home tone">
         <div className="wide about-home__grid">
           <div>
             <p className="kicker" data-reveal="fade-up">Über Mich</p>
@@ -127,9 +127,9 @@ export default function HomePage() {
       </section>
 
       <section className="testimonials wide">
-        <p className="kicker">Echte Erfahrungsberichte</p>
-        <h2>Lass dich durch Erfahrungen von<br className="desktop-only" /> Anderen überzeugen</h2>
-        <TestimonialCarousel items={testimonials} />
+        <p className="kicker" data-reveal="fade-up">Echte Erfahrungsberichte</p>
+        <h2 data-reveal="fade-up">Lass dich durch Erfahrungen von<br className="desktop-only" /> Anderen überzeugen</h2>
+        <div data-reveal="fade-up"><TestimonialCarousel items={testimonials} /></div>
       </section>
 
       <ClosingCta />

@@ -19,11 +19,9 @@ export function TestimonialCarousel({ items }: { items: readonly Testimonial[] }
 
   useEffect(() => {
     if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setInterval(() => move(1), 4000);
+    const timer = window.setInterval(() => move(1), 7000);
     return () => window.clearInterval(timer);
   }, [move, paused]);
-
-  const item = items[active];
 
   return (
     <div
@@ -37,15 +35,21 @@ export function TestimonialCarousel({ items }: { items: readonly Testimonial[] }
         if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false);
       }}
     >
-      <article aria-live="polite">
-        <header>
-          <Image src={`/media/${item.image}`} alt="" width={64} height={64} />
-          <strong>{item.name}</strong>
-        </header>
-        <div className="testimonial-copy">
-          {item.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-        </div>
-      </article>
+      {/* All slides stay stacked so the card is as tall as its own content
+          instead of a hard-coded height, and changing slide can cross-fade. */}
+      <div className="testimonial-stack" aria-live="polite">
+        {items.map((item, index) => (
+          <article key={item.name} data-active={index === active} aria-hidden={index !== active} inert={index !== active}>
+            <header>
+              <Image src={`/media/${item.image}`} alt="" width={64} height={64} />
+              <strong>{item.name}</strong>
+            </header>
+            <div className="testimonial-copy">
+              {item.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </div>
+          </article>
+        ))}
+      </div>
       <button className="carousel-arrow carousel-arrow--previous" type="button" onClick={() => move(-1)} aria-label="Vorheriger Erfahrungsbericht">❮</button>
       <button className="carousel-arrow carousel-arrow--next" type="button" onClick={() => move(1)} aria-label="Nächster Erfahrungsbericht">❯</button>
       <div className="carousel-dots" aria-label="Erfahrungsbericht auswählen">
