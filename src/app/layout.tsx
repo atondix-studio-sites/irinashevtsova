@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Courgette, Open_Sans } from "next/font/google";
+import Script from "next/script";
 import { MotionController } from "@/components/motion-controller";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import "./globals.css";
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main id="inhalt">{children}</main>
         <SiteFooter />
         <MotionController />
+        <Script src="https://studio.atondix.de/sdk/atondix.js" strategy="afterInteractive" />
       </body>
     </html>
   );
