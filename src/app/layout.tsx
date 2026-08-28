@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  const studioSiteToken = process.env.NEXT_PUBLIC_STUDIO_SITE_TOKEN;
   return (
     <html lang="de" className={`${courgette.variable} ${openSans.variable}`}>
       <body>
@@ -23,7 +24,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main id="inhalt">{children}</main>
         <SiteFooter />
         <MotionController />
-        <Script src="https://studio.atondix.de/sdk/atondix.js" strategy="afterInteractive" />
+        <Script
+          src="https://studio.atondix.de/sdk/atondix.js"
+          data-site-token={studioSiteToken || undefined}
+          data-consent={studioSiteToken ? "pending" : undefined}
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
